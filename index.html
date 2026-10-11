@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Responsive Navbar</title>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+<body class="bg-slate-50 text-slate-800">
+  <nav class="bg-white shadow">
+    <div class="mx-auto flex max-w-6xl flex-wrap items-center justify-between px-6 py-4">
+      <a href="#home" class="rounded text-xl font-bold text-indigo-600 hover:text-indigo-800 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-indigo-500">Olga Igabe</a>
+
+      <button id="menu-btn" type="button" aria-expanded="false" aria-controls="menu" aria-label="Toggle menu"
+        class="rounded-md p-2 text-slate-700 hover:bg-slate-100 focus-visible:outline-2 focus-visible:outline-indigo-500 md:hidden">
+        <svg class="size-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+      </button>
+
+      <div id="menu" class="hidden w-full md:block md:w-auto">
+        <ul class="flex flex-col gap-1 pt-4 md:flex-row md:gap-4 md:pt-0">
+          <li><a href="#home" class="block rounded-md px-3 py-2 hover:bg-indigo-50 hover:text-indigo-600 focus-visible:outline-2 focus-visible:outline-indigo-500">Home</a></li>
+          <li><a href="#about" class="block rounded-md px-3 py-2 hover:bg-indigo-50 hover:text-indigo-600 focus-visible:outline-2 focus-visible:outline-indigo-500">About</a></li>
+          <li><a href="#projects" class="block rounded-md px-3 py-2 hover:bg-indigo-50 hover:text-indigo-600 focus-visible:outline-2 focus-visible:outline-indigo-500">Projects</a></li>
+          <li><a href="#contact" class="block rounded-md px-3 py-2 hover:bg-indigo-50 hover:text-indigo-600 focus-visible:outline-2 focus-visible:outline-indigo-500">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <main class="mx-auto max-w-6xl px-6">
+    <section id="home" class="py-16">
+      <h1 class="text-3xl font-bold">Responsive Navigation Bar</h1>
+      <p class="mt-4">Resize the window below 768px to see the hamburger menu.</p>
+    </section>
+    <section id="about" class="py-16">
+      <h2 class="text-2xl font-semibold">About</h2>
+      <p class="mt-4">Software Engineering student at ALU, learning Tailwind CSS at SheCanCode.</p>
+    </section>
+    <section id="projects" class="py-16">
+      <h2 class="text-2xl font-semibold">Projects</h2>
+      <p class="mt-4">Campus Life Planner, Layout Gym and Umuseke Café.</p>
+    </section>
+    <section id="contact" class="py-16">
+      <h2 class="text-2xl font-semibold">Contact</h2>
+      <p class="mt-4">Find me on GitHub as IGABE179.</p>
+    </section>
+  </main>
+
+  <script>
+    const btn = document.getElementById('menu-btn');
+    const menu = document.getElementById('menu');
+    btn.addEventListener('click', () => {
+      const isHidden = menu.classList.toggle('hidden');
+      btn.setAttribute('aria-expanded', String(!isHidden));
+    });
+    menu.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', () => {
+        menu.classList.add('hidden');
+        btn.setAttribute('aria-expanded', 'false');
+      });
+    });
+  </script>
+</body>
+</html>
